@@ -1,42 +1,56 @@
+# Network Vulnerability Scanner and Report Generator
 
-# Network Vulnerability Scanner
-A Bash script that uses Nmap to scan a target for open ports and known vulnerabilities, generating a summary report of the findings. This project is the culmination of the Shell Scripting course.
+## Overview
+
+This project is a Bash script that uses Nmap to scan a network target. It finds open ports and running services and saves the information into a text report.
+
+## Purpose and Learning
+
+I made this project for my Bash scripting class. It helped me learn Linux commands, Bash scripting, Nmap, network security, Git, GitHub, and how to automate tasks.
+
+## Current Status
+
+The scanner is working and can create a text report. The report shows the target, open ports, detected services, possible security problems, recommendations, and the date it was created.
 
 ## Features
 
-Accepts a target IP address or hostname from the command line.
-* Performs an Nmap scan to detect services and versions.
-
-* (Coming soon) Uses NSE scripts to check for specific vulnerabilities.
-
-* (Coming soon) Generates a formatted report summarizing open ports and potential risks.
-
-* Includes input validation and prerequisite checks.
+* Scans an IP address or hostname.
+* Finds open ports and running services.
+* Shows service version information.
+* Lists possible security problems.
+* Creates a text report with basic recommendations.
 
 ## Prerequisites
 
-To run this script, you will need the following installed:
+You need these programs installed:
 
-* Bash (v4+)
-
-* Nmap (v7.60+)
+* Bash
+* Nmap
 
 ## Usage
 
-   `git clone git@github.com:SephissVR/my_scanner.git`
+Make the scripts executable:
 
-    Navigate to the directory: `cd my_scanner`
+    chmod +x netscan.sh scan_report.sh
 
-   Make the script executable: `chmod +x scan_report.sh`
-   Run the script with a target:
+Run the scanner:
 
-   ./scan_report.sh <target_ip_or_hostname>
-
+    ./netscan.sh <target_ip_or_hostname>
 
 Example:
-./scan_report.sh scanme.nmap.org
+
+    ./netscan.sh scanme.nmap.org
+
+The results will be saved into a text report.
+
+## Future Goals
+
+I want to add better input checking, more accurate vulnerability detection, clearer error messages, and more detailed reports.
+
 ## Ethical Considerations
 
-This tool is for educational purposes only. Only run scans against hosts and networks for which you have explicit, written permission. Unauthorized network scanning is illegal.
+This project is only for school, learning, and authorized security testing. Only scan computers or networks that you own or have permission to test. Scanning without permission can be illegal.
+
+## Author
 
 SephissVR
