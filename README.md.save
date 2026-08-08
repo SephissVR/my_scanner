@@ -1,0 +1,62 @@
+# Network Vulnerability Scanner and Report Generator
+
+## Overview
+
+This project is a Bash script that uses Nmap to scan a network target. It can find open ports, running services, and save the scan information into a report file.
+
+## Purpose and Learning
+
+I made this project for my Bash scripting class. The project helped me learn more about Linux commands, shell scripting, network security, Git, GitHub, and how to make a script run tasks automatically.
+
+## Current Status
+
+The basic scanner is working. It can take an IP address or hostname, run an Nmap scan, and save the results into a text report.
+
+## Features
+
+* Takes an IP address or hostname from the user.
+* Uses Nmap to scan the target.
+* Finds open ports and running services.
+* Shows service version information.
+* Saves the scan results into a report.
+* Uses Bash to automate the process.
+
+## Prerequisites
+
+You need these programs installed:
+
+* Bash
+* Nmap
+
+## Usage
+
+First, make the scripts executable:
+
+    chmod +x netscan.sh scan_report.sh
+
+Run the scanner:
+
+    ./netscan.sh <target_ip_or_hostname>
+
+Example:
+
+    ./netscan.sh scanme.nmap.org
+
+After the scan is finished, the results will be saved into a report file.
+
+## Future Goals
+
+I want to improve the scanner by adding better input checking, more vulnerability scans, better error messages, and more detailed reports.
+
+## Ethical Considerations
+
+This project is only for school, learning, and authorized security testing. You should only scan computers or networks that you own or have permission to test. Scanning a network without permission can be illegal.
+
+## Author
+
+SephissVR
+EOFScans an IP address or hostname.
+Finds open ports and running services.
+Shows service version information.
+Lists possible security problems.
+Creates a text report with basic recommendations.

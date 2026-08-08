@@ -16,7 +16,7 @@ write_ports_section() {
     echo "Open Ports and Detected Services"
     echo "--------------------------------"
 
-    echo "$SCAN_RESULTS" | grep -E '^[0-9]+/(tcp|udp)[[:space:]]+open'
+    echo "$SCAN_RESULTS" | grep -E '^[0-9]+/(tcp|udp).*open'
 
     echo
 }
@@ -27,7 +27,7 @@ write_vulns_section() {
     echo "------------------------------------"
     echo
 
-    # NSE results
+    # NSE check
     echo "NSE Vulnerability Results"
     echo
 
@@ -37,7 +37,7 @@ write_vulns_section() {
     echo "Analyzing Service Versions"
     echo
 
-    # Check versions
+    # Version check
     echo "$SCAN_RESULTS" | while read -r line; do
 
         case "$line" in
@@ -98,8 +98,8 @@ main() {
     echo "Scanning $target..."
     echo "This may take a while."
 
-    # NSE vulnerability scan
-    SCAN_RESULTS=$(nmap -sV --script vuln --script-timeout 30s "$target")
+    # Run NSE scan
+    SCAN_RESULTS=$(nmap -sV --script vuln "$target")
 
     # Build report
     write_header "$target" > "$REPORT_FILE"
@@ -113,3 +113,4 @@ main() {
 
 # Start
 main "$@"
+SCAN_RESULTS=$(nmap -sV --script vuln "$target")
