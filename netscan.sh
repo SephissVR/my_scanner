@@ -28,7 +28,7 @@ write_ports_section() {
 query_nvd() {
     local product="$1"
     local version="$2"
-    local results_limit=3
+    local results_limit=8
 
     echo
     echo "Querying NVD for vulnerabilities in: $product $version..."
@@ -250,9 +250,14 @@ main() {
 
     # Nmap scan
     if ! SCAN_RESULTS=$(nmap -sV --script vuln \
-        --script-timeout 30s "$target"); then
+        --script-timeout 30s "$target" 2>&1); then
 
         echo "Nmap scan failed."
+        exit 1
+    fi
+
+    if echo "$SCAN_RESULTS" | grep -qiE 'Failed to resolve|No targets were specified|0 IP addresses'; then
+        echo "Error: Target could not be resolved or scanned."
         exit 1
     fi
 

@@ -1,0 +1,67 @@
+Network Security Scan Report
+============================
+
+Target: 127.0.0.1
+
+Open Ports and Detected Services
+--------------------------------
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+3000/tcp open  ppp?
+5900/tcp open  vnc     VNC (protocol 3.8)
+
+Potential Vulnerabilities Identified
+------------------------------------
+NSE Vulnerability Results
+
+No vulnerabilities directly found by NSE.
+
+Analyzing Service Versions
+
+
+Live NVD Vulnerability Lookup
+-----------------------------
+
+Querying NVD for vulnerabilities in: OpenSSH 7.6p1...
+  CVE ID: CVE-2007-2768
+  Description: OpenSSH, when using OPIE (One-Time Passwords in Everything) for PAM, allows remote attackers to determine the existence of certain user accounts, which displays a different response if the user account exists and is configured to use one-time passwords (OTP), a similar issue to CVE-2007-2243.
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2008-3844
+  Description: Certain Red Hat Enterprise Linux (RHEL) 4 and 5 packages for OpenSSH, as signed in August 2008 using a legitimate Red Hat GPG key, contain an externally introduced modification (Trojan Horse) that allows the package authors to have an unknown impact.  NOTE: since the malicious packages were not distributed from any official Red Hat sources, the scope of this issue is restricted to users who may have obtained these packages through unofficial distribution points.  As of 20080827, no unofficial distributions of this software are known.
+  Severity: HIGH
+---
+  CVE ID: CVE-2018-15473
+  Description: OpenSSH through 7.7 is prone to a user enumeration vulnerability due to not delaying bailout for an invalid authenticating user until after the packet containing the request has been fully parsed, related to auth2-gss.c, auth2-hostbased.c, and auth2-pubkey.c.
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2018-15919
+  Description: Remotely observable behaviour in auth-gss2.c in OpenSSH through 7.8 could be used by remote attackers to detect existence of users on a target system when GSS2 is in use. NOTE: the discoverer states 'We understand that the OpenSSH developers do not want to treat such a username enumeration (or "oracle") as a vulnerability.'
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2018-20685
+  Description: In OpenSSH 7.9, scp.c in the scp client allows remote SSH servers to bypass intended access restrictions via the filename of . or an empty filename. The impact is modifying the permissions of the target directory on the client side.
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2019-6109
+  Description: An issue was discovered in OpenSSH 7.9. Due to missing character encoding in the progress display, a malicious server (or Man-in-The-Middle attacker) can employ crafted object names to manipulate the client output, e.g., by using ANSI control codes to hide additional files being transferred. This affects refresh_progress_meter() in progressmeter.c.
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2019-6110
+  Description: In OpenSSH 7.9, due to accepting and displaying arbitrary stderr output from the server, a malicious server (or Man-in-The-Middle attacker) can manipulate the client output, for example to use ANSI control codes to hide additional files being transferred.
+  Severity: MEDIUM
+---
+  CVE ID: CVE-2019-6111
+  Description: An issue was discovered in OpenSSH 7.9. Due to the scp implementation being derived from 1983 rcp, the server chooses which files/directories are sent to the client. However, the scp client only performs cursory validation of the object name returned (only directory traversal attacks are prevented). A malicious scp server (or Man-in-The-Middle attacker) can overwrite arbitrary files in the scp client target directory. If recursive operation (-r) is performed, the server can manipulate subdirectories as well (for example, to overwrite the .ssh/authorized_keys file).
+  Severity: MEDIUM
+---
+
+Recommendations for Remediation
+-------------------------------
+
+Update all software to the newest version.
+Change any default passwords.
+Use a firewall.
+Close ports that are not needed.
+
+End of Report
+Generated on: Fri Aug 14 22:21:34 UTC 2026

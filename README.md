@@ -1,56 +1,91 @@
-# Network Vulnerability Scanner and Report Generator
+# Network Vulnerability Scanner
 
 ## Overview
 
-This project is a Bash script that uses Nmap to scan a network target. It finds open ports and running services and saves the information into a text report.
-
-## Purpose and Learning
-
-I made this project for my Bash scripting class. It helped me learn Linux commands, Bash scripting, Nmap, network security, Git, GitHub, and how to automate tasks.
-
-## Current Status
-
-The scanner is working and can create a text report. The report shows the target, open ports, detected services, possible security problems, recommendations, and the date it was created.
+This project is a Bash script that uses Nmap to scan an IP address or hostname. It finds open ports, running services, possible vulnerabilities, and creates a report.txt file.
 
 ## Features
 
-* Scans an IP address or hostname.
-* Finds open ports and running services.
-* Shows service version information.
-* Lists possible security problems.
-* Creates a text report with basic recommendations.
+- Scans an IP address or hostname
+- Finds open ports and services
+- Detects service versions
+- Uses Nmap NSE vulnerability scripts
+- Checks service versions for known vulnerabilities
+- Uses the NVD API to find CVEs
+- Shows CVE IDs, descriptions, and severity
+- Creates a report.txt file
+- Gives basic security recommendations
+- Includes input validation and error handling
 
-## Prerequisites
+## Requirements
 
-You need these programs installed:
+You need:
 
-* Bash
-* Nmap
+- Bash
+- Nmap
+- curl
+- jq
+- Internet access for the NVD API
 
-## Usage
+## How to Run
 
-Make the scripts executable:
+Make the script executable:
 
-    chmod +x netscan.sh scan_report.sh
+    chmod +x netscan.sh
 
-Run the scanner:
+Run it with an IP address or hostname:
 
-    ./netscan.sh <target_ip_or_hostname>
+    ./netscan.sh <target>
 
 Example:
 
-    ./netscan.sh scanme.nmap.org
+    ./netscan.sh 127.0.0.1
 
-The results will be saved into a text report.
+## Nmap Commands
 
-## Future Goals
+The script uses:
 
-I want to add better input checking, more accurate vulnerability detection, clearer error messages, and more detailed reports.
+    nmap -sV --script vuln <target>
+
+`-sV` detects the service and version running on open ports.
+
+`--script vuln` runs Nmap NSE scripts that look for possible vulnerabilities.
+
+## How Vulnerabilities Are Found
+
+The script checks the services and versions found by Nmap. It can match known vulnerable versions with CVEs.
+
+It also uses Nmap NSE scripts and the National Vulnerability Database (NVD) API. The NVD lookup can return CVE IDs, descriptions, and severity levels.
+
+These results are possible vulnerabilities. A CVE match does not always mean the computer can actually be exploited.
+
+## Report
+
+The script creates a report.txt file that includes:
+
+- Target IP or hostname
+- Open ports
+- Detected services
+- Possible vulnerabilities
+- NVD CVE results
+- Severity
+- Security recommendations
+- Date the report was created
+
+## Recommendations
+
+Some recommendations the scanner can give are:
+
+- Update old software
+- Install security patches
+- Change default passwords
+- Close ports that are not needed
+- Use a firewall
 
 ## Ethical Considerations
 
-This project is only for school, learning, and authorized security testing. Only scan computers or networks that you own or have permission to test. Scanning without permission can be illegal.
+Only scan computers or networks that you own or have permission to test. Scanning systems without permission can be illegal. This project was made for school, learning, and authorized security testing.
 
 ## Author
 
-SephissVR
+Anastasia Casagrande
